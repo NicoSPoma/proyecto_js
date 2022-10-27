@@ -1,14 +1,39 @@
+function Persona(nombre, apellido, edad){
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.edad = edad;
+
+    this.saludar = function(){
+        alert("¡Bienvenido a La Moviola Cines "+ this.nombre+ " " +this.apellido+"!");
+        alert("En nuestros cines vas a poder disfrutar de: \n-Comprar entradas para tus peliculas favoritas  \n-Comprar pochoclos \n-Hacerte socio de Moviola Club");
+    }
+}
 
 
+let nombre = prompt ("Ingrese un nombre: ");
+let apellido = prompt ("Ingrese un apellido: ");
+let edad = parseInt(prompt("Ingrese la edad:"));
 
-let nombre = prompt("Bienvenido, escribe tu nombre");
-let apellido = prompt("Ahora te pedimos tu apellido");
-alert("¡Bienvenido a La Moviola Cines "+nombre+" "+apellido+"!");
-alert("En nuestros cines vas a poder disfrutar de: \n-Comprar entradas para tus peliculas favoritas  \n-Comprar pochoclos \n-Hacerte socio de Moviola Club");
-  
+const persona1 = new Persona(nombre, apellido, edad);
+
+persona1.saludar();
 
 
-function comprarItems () {
+class Productos {
+    constructor (producto, precio){
+        this.producto = nombre;
+        this.precio= precio;
+    }
+}
+
+let entradas = new Productos ("Entradas", 500);
+let pochoclos = new Productos("Pochoclos", 400);
+let nachos = new Productos("Nachos", 300);
+let gaseosa = new Productos("Gaseosa", 450);
+let chipa = new Productos ("Chipa", 250);
+
+
+function comprarItems (Productos) {
     let items = "";
     let terminar_compras = true ;
 
@@ -16,10 +41,15 @@ function comprarItems () {
 
         let lista = prompt ("Anota acá lo que queres comprar");
         let compra = listaCompras (lista) ;
+        
 
         if (compra){
-            console.log ("Se agrego al carrito :"+compra);
+            alert ("Se agrego al carrito :"+compra);
+        
+            
+            
             items += "\n"+compra;
+        
 
         }else {
 
@@ -44,6 +74,7 @@ function comprarItems () {
 
 
 }
+
 
 
 function listaCompras (lista) {
