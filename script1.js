@@ -1,116 +1,56 @@
-function Persona(nombre, apellido, edad){
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.edad = edad;
+/* SISTEMA DE RESERVA DE HOTEL */
 
-    this.saludar = function(){
-        alert("¡Bienvenido a La Moviola Cines "+ this.nombre+ " " +this.apellido+"!");
-        alert("En nuestros cines vas a poder disfrutar de: \n-Comprar entradas para tus peliculas favoritas  \n-Comprar pochoclos \n-Hacerte socio de Moviola Club");
+class Reserva {
+    constructor(nombreCliente, apellidoCliente, numeroReserva, habitacion) {
+        this.nombreCliente = nombreCliente ;
+        this.apellidoCliente = apellidoCliente ;
+        this.numeroReserva = numeroReserva;
+        this.habitacion = habitacion;
     }
 }
 
 
-let nombre = prompt ("Ingrese un nombre: ");
-let apellido = prompt ("Ingrese un apellido: ");
-let edad = parseInt(prompt("Ingrese la edad:"));
+const reservas = [];
 
-const persona1 = new Persona(nombre, apellido, edad);
+const formulario = document.getElementById("formulario");
 
-persona1.saludar();
+formulario.addEventListener("submit", (event) => {
+    event.preventDefault();
+    agregarReserva();
+})
 
+function agregarReserva (){
+    const nombre = document.getElementById("nombre").value;
+    const apellido = document.getElementById ("apellido").value;
+    const reserva = document.getElementById("reserva").value;
+    const habitacion = document.getElementById("habitacion").value;
 
-class Productos {
-    constructor (producto, precio){
-        this.producto = nombre;
-        this.precio= precio;
-    }
+    const nuevaReserva = new Reserva(nombre, apellido, reserva, habitacion);
+
+    reservas.push(nuevaReserva);
+
+    //verificamos
+    console.log(reservas);
+    formulario.reset();
 }
 
-let entradas = new Productos ("Entradas", 500);
-let pochoclos = new Productos("Pochoclos", 400);
-let nachos = new Productos("Nachos", 300);
-let gaseosa = new Productos("Gaseosa", 450);
-let chipa = new Productos ("Chipa", 250);
+const contenedorReservas = document.getElementById("contenedorReservas");
 
+const verReservas = document.getElementById("verReservas");
 
-function comprarItems (Productos) {
-    let items = "";
-    let terminar_compras = true ;
+verReservas.addEventListener("click", () =>{
+    contenedorReservas.innerHTML = "";
 
-    while (terminar_compras) {
-
-        let lista = prompt ("Anota acá lo que queres comprar");
-        let compra = listaCompras (lista) ;
-        
-
-        if (compra){
-            alert ("Se agrego al carrito :"+compra);
-        
-            
-            
-            items += "\n"+compra;
-        
-
-        }else {
-
-            if (lista === null) {
-                terminar_compras = false;
-
-            }else {
-                alert("No contamos con eso en el cine");
-            }
-        
-        }
-    }
-
-    if (items != "") {
-        
-        let resp = confirm ("Estos son los items que quiere comprar?"+items);
-        if (resp) {
-            alert ("Los items del carrito han sido adquiridos")
-        }
-
-    }
-
-
-}
-
-
-
-function listaCompras (lista) {
-
-    let compra ;
-    switch (lista) {
-
-        case "entradas" :
-            compra = "Entradas de cine" ;
-            break;
-        
-        case "pochoclos" : 
-            compra = "Pochoclos chicos";
-            break;
-
-        case "nachos" :
-            compra = "Nachos con cheddar";
-            break;
-        
-        case "gaseosa" :
-            compra = "Gaseosa grande";
-            break;
-
-        case "chipa" :
-            compra = "Chipa";
-            break;
-
-        default : 
-            compra = false;
-
-    }
-
-    return compra ;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    comprarItems();
-
-});
+    reservas.forEach( reserva => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+                        <div>
+                             <p> Nombre del Cliente: $(reserva.nombreCliente) </p>
+                             <p> Apellido del Cliente: $(reserva.apellidoCliente) </p>
+                             <p> Numero de reserva: $(reserva.numeroReserva) </p>
+                             <p> Habitacion: $(reserva.habitacion) </p>
+                        </div>
+                         `
+        contenedorReservas.appendChild(div);
+    })
+})
