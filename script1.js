@@ -45,10 +45,10 @@ verReservas.addEventListener("click", () =>{
         const div = document.createElement("div");
         div.innerHTML = `
                         <div>
-                             <p> Nombre del Cliente: $(reserva.nombreCliente) </p>
-                             <p> Apellido del Cliente: $(reserva.apellidoCliente) </p>
-                             <p> Numero de reserva: $(reserva.numeroReserva) </p>
-                             <p> Habitacion: $(reserva.habitacion) </p>
+                             <p> Nombre del Cliente: ${reserva.nombreCliente} </p>
+                             <p> Apellido del Cliente: ${reserva.apellidoCliente} </p>
+                             <p> Numero de reserva: ${reserva.numeroReserva} </p>
+                             <p> Habitacion: ${reserva.habitacion} </p>
                         </div>
                          `
         contenedorReservas.appendChild(div);
