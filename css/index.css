@@ -1,0 +1,49 @@
+body {
+    background-color: #E9C46A;
+    font-family: "Noto Sans", sans-serif; }
+
+.imgProductos {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-top: 1rem;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem;
+    background-color: #246a73;
+}
+
+.colorBoton{
+    color: white;
+    background-color: #368f8b;
+}
+
+.colorBoton:hover{
+    background-color: #368f8b;
+    color: white;
+}
+.main__top {
+    position: relative;
+    justify-items: center;
+    align-items: center;
+    justify-content: center; }
+    .main__top_title {
+      font-size: 3em;
+      padding: 1rem;
+    }
+      .main__top_title b{
+         background-color: #f4a261;
+        
+      text-align: center;
+      border-radius: 1rem;
+      }
+    .main__top_text {
+      position: relative;
+      padding: 1rem; }
+      .main__top_text p {
+        font-size: 1.8em;
+        color: #000000;
+        padding: 1rem; }
